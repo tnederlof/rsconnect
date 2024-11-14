@@ -93,6 +93,13 @@ connectClient <- function(service, authInfo) {
       POST_JSON(service, authInfo, path, json)
     },
 
+    buildApplication = function(application, bundleId = NULL, spaceId = NULL) {
+      path <- paste("/applications/", application$id, "/build", sep = "")
+      json <- list()
+      json$bundle <- as.numeric(bundleId)
+      POST_JSON(service, authInfo, path, json)
+    },
+
     configureApplication = function(applicationId) {
       GET(service, authInfo, paste(
         "/applications/", applicationId, "/config", sep = ""))
