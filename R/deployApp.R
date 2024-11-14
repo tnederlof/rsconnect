@@ -483,14 +483,14 @@ deployApp <- function(appDir = getwd(),
   }
 
   if (!quiet) {
-    cli::cli_rule("Deploying to server")
+    cli::cli_rule("BUILD to server")
   }
   task <- client$buildApplication(application, bundle$id, space)
   taskId <- if (is.null(task$task_id)) task$id else task$task_id
   # wait for the deployment to complete (will raise an error if it can't)
   response <- client$waitForTask(taskId, quiet)
   if (!quiet) {
-    cli::cli_rule("Deployment complete")
+    cli::cli_rule("BUILD complete")
   }
 
   # wait 1/10th of a second for any queued output get picked by RStudio
