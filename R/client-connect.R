@@ -92,9 +92,9 @@ connectClient <- function(service, authInfo) {
       json$bundle <- as.numeric(bundleId)
       POST_JSON(service, authInfo, path, json)
     },
-
+    
     buildApplication = function(application, bundleId = NULL, spaceId = NULL) {
-      path <- paste("/applications/", application$id, "/build", sep = "")
+      path <- paste("/v1/content/", application$id, "/build", sep = "")
       json <- list()
       json$bundle <- as.numeric(bundleId)
       print("BUILDAPP")
